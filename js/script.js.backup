@@ -1,0 +1,355 @@
+/**
+ * Modern Website JavaScript
+ * Handles form submissions, smooth scrolling, and interactions
+ */
+
+// ========================================
+// Smooth Scrolling for Navigation Links
+// ========================================
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+
+        if (targetId === '#') return;
+
+        const targetElement = document.querySelector(targetId);
+
+        if (targetElement) {
+            const offsetTop = targetElement.offsetTop - 80; // Account for nav height
+
+            window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// ========================================
+// eBook Download Form Handler
+// ========================================
+
+const ebookForm = document.getElementById('ebookForm');
+const thankYouPage = document.getElementById('thankYouPage');
+const downloadLink = document.getElementById('downloadLink');
+const closeThankYou = document.getElementById('closeThankYou');
+
+if (ebookForm) {
+    ebookForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Get form data
+        const formData = {
+            email: document.getElementById('email').value,
+            firstName: document.getElementById('firstName').value,
+            lastName: document.getElementById('lastName').value,
+            phone: document.getElementById('phone').value || 'Not provided'
+        };
+
+        // Log form data (In production, send this to your backend/email service)
+        console.log('eBook Request Form Data:', formData);
+
+        // Store data in localStorage (optional - for tracking)
+        localStorage.setItem('ebookRequest', JSON.stringify(formData));
+
+        // Show thank you page
+        showThankYouPage();
+
+        // Reset form
+        ebookForm.reset();
+
+        // In production, you would send this data to your server/email service
+        // Example:
+        // sendToServer(formData);
+    });
+}
+
+// ========================================
+// Contact Form Handler
+// ========================================
+
+const contactForm = document.getElementById('contactForm');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Get form data
+        const formData = {
+            firstName: document.getElementById('contactFirstName').value,
+            lastName: document.getElementById('contactLastName').value,
+            email: document.getElementById('contactEmail').value,
+            message: document.getElementById('message').value
+        };
+
+        // Log form data (In production, send this to your backend/email service)
+        console.log('Contact Form Data:', formData);
+
+        // Store data in localStorage (optional)
+        const contactHistory = JSON.parse(localStorage.getItem('contactHistory') || '[]');
+        contactHistory.push({
+            ...formData,
+            timestamp: new Date().toISOString()
+        });
+        localStorage.setItem('contactHistory', JSON.stringify(contactHistory));
+
+        // Show success message
+        showSuccessMessage(contactForm, 'Thank you! Your message has been sent. I\'ll respond shortly.');
+
+        // Reset form
+        contactForm.reset();
+
+        // In production, send to your email service
+        // Example:
+        // sendContactEmail(formData);
+    });
+}
+
+// ========================================
+// Thank You Page Functions
+// ========================================
+
+function showThankYouPage() {
+    thankYouPage.classList.remove('hidden');
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+
+    // Set the download link (replace with your actual eBook file path)
+    downloadLink.href = 'path-to-your-ebook.pdf'; // UPDATE THIS PATH
+    downloadLink.download = 'Small-Business-AI-Guide.pdf';
+}
+
+function hideThankYouPage() {
+    thankYouPage.classList.add('hidden');
+    document.body.style.overflow = ''; // Restore scrolling
+}
+
+// Close thank you page
+if (closeThankYou) {
+    closeThankYou.addEventListener('click', hideThankYouPage);
+}
+
+// Close on background click
+if (thankYouPage) {
+    thankYouPage.addEventListener('click', function(e) {
+        if (e.target === thankYouPage) {
+            hideThankYouPage();
+        }
+    });
+}
+
+// Close on ESC key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && !thankYouPage.classList.contains('hidden')) {
+        hideThankYouPage();
+    }
+});
+
+// ========================================
+// Success Message Display
+// ========================================
+
+function showSuccessMessage(formElement, message) {
+    // Create success message element
+    const successDiv = document.createElement('div');
+    successDiv.className = 'success-message';
+    successDiv.textContent = message;
+    successDiv.style.cssText = `
+        background: #10b981;
+        color: white;
+        padding: 1rem 1.5rem;
+        border-radius: 12px;
+        margin-top: 1rem;
+        text-align: center;
+        animation: slideIn 0.3s ease-out;
+        box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    `;
+
+    // Add animation
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    `;
+    document.head.appendChild(style);
+
+    // Insert message after form
+    formElement.parentNode.insertBefore(successDiv, formElement.nextSibling);
+
+    // Remove message after 5 seconds
+    setTimeout(() => {
+        successDiv.style.animation = 'slideOut 0.3s ease-out';
+        setTimeout(() => successDiv.remove(), 300);
+    }, 5000);
+}
+
+// ========================================
+// Scroll Animation Observers
+// ========================================
+
+// Observe elements and add animation classes when they enter viewport
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, observerOptions);
+
+// Apply to feature cards and testimonials
+document.addEventListener('DOMContentLoaded', function() {
+    // Set initial state for animated elements
+    const animatedElements = document.querySelectorAll('.feature-card, .testimonial-card');
+
+    animatedElements.forEach((el, index) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+        el.style.transitionDelay = `${index * 0.1}s`;
+
+        observer.observe(el);
+    });
+});
+
+// ========================================
+// Form Validation Enhancement
+// ========================================
+
+// Add real-time validation feedback
+function addValidationFeedback() {
+    const inputs = document.querySelectorAll('input[required], textarea[required]');
+
+    inputs.forEach(input => {
+        input.addEventListener('blur', function() {
+            if (this.value.trim() === '') {
+                this.style.borderColor = '#ef4444';
+            } else {
+                this.style.borderColor = '#10b981';
+            }
+        });
+
+        input.addEventListener('focus', function() {
+            this.style.borderColor = '#2563eb';
+        });
+    });
+
+    // Email validation
+    const emailInputs = document.querySelectorAll('input[type="email"]');
+    emailInputs.forEach(input => {
+        input.addEventListener('blur', function() {
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (this.value && !emailPattern.test(this.value)) {
+                this.style.borderColor = '#ef4444';
+                showValidationError(this, 'Please enter a valid email address');
+            } else if (this.value) {
+                this.style.borderColor = '#10b981';
+                removeValidationError(this);
+            }
+        });
+    });
+}
+
+function showValidationError(input, message) {
+    removeValidationError(input);
+
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'validation-error';
+    errorDiv.textContent = message;
+    errorDiv.style.cssText = `
+        color: #ef4444;
+        font-size: 0.875rem;
+        margin-top: 0.25rem;
+        margin-bottom: 0.5rem;
+    `;
+
+    input.parentNode.insertBefore(errorDiv, input.nextSibling);
+}
+
+function removeValidationError(input) {
+    const existingError = input.nextElementSibling;
+    if (existingError && existingError.classList.contains('validation-error')) {
+        existingError.remove();
+    }
+}
+
+// Initialize validation on page load
+document.addEventListener('DOMContentLoaded', addValidationFeedback);
+
+// ========================================
+// Navbar Scroll Effect (Optional Enhancement)
+// ========================================
+
+let lastScrollTop = 0;
+const nav = document.querySelector('.hero-nav');
+
+window.addEventListener('scroll', function() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (scrollTop > 100) {
+        nav.style.background = 'rgba(255, 255, 255, 0.95)';
+        nav.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+        nav.style.backdropFilter = 'blur(10px)';
+    } else {
+        nav.style.background = 'transparent';
+        nav.style.boxShadow = 'none';
+        nav.style.backdropFilter = 'none';
+    }
+
+    lastScrollTop = scrollTop;
+});
+
+// ========================================
+// Utility: Send Data to Server (Template)
+// ========================================
+
+/**
+ * Template function for sending form data to your backend
+ * You'll need to implement this based on your backend setup
+ */
+async function sendToServer(data, endpoint) {
+    try {
+        const response = await fetch(endpoint, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        });
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const result = await response.json();
+        console.log('Success:', result);
+        return result;
+
+    } catch (error) {
+        console.error('Error:', error);
+        return null;
+    }
+}
+
+// ========================================
+// Console Welcome Message
+// ========================================
+
+console.log('%c👋 Welcome to Mike Saif\'s AI for Small Business Site!',
+    'color: #2563eb; font-size: 16px; font-weight: bold;');
+console.log('%cBuilt with modern HTML, CSS, and JavaScript',
+    'color: #6b7280; font-size: 12px;');

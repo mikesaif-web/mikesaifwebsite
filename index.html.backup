@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn how AI can help your small business with automation, efficiency, and profitability">
+    <title>AI for Small Business - Free eBook by Mike Saif</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+        <nav class="hero-nav">
+            <div class="nav-container">
+                <ul class="nav-menu">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#download" class="nav-btn">Download the eBook</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="hero-content container">
+            <div class="hero-text">
+                <h1 class="hero-headline">Want to Learn How AI Can Help Your Small Business</h1>
+                <p class="hero-copy">AI is here whether you are ready for it or not. Small businesses are quickly adopting AI solutions to automate their workflows and daily tasks, saving time, costs, and increasing profits. The chances are, your competitors are already thinking about AI or have already made the leap with AI. It's time to act and see what parts of your business you can automate, and stay one step ahead of your competitors.</p>
+                <a href="#download" class="cta-button">Download the eBook</a>
+            </div>
+            <div class="hero-image">
+                <img src="images/Section1Hero.png" alt="Small Business AI eBook Cover" class="book-cover">
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Two - What You'll Find -->
+    <section id="what-youll-find" class="features-section">
+        <div class="container">
+            <h2 class="section-title">What You'll Find in this eBook</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3 class="feature-title">What is AI?</h3>
+                    <p class="feature-text">Why ChatGPT, Gemini and other AI bots are for individual use are not suitable for small businesses who want real automation. This guide will explain how AI can deliver the greatest return on investment and show you the solutions that are effective and manageable for a small business.</p>
+                </div>
+                <div class="feature-card">
+                    <h3 class="feature-title">Real Life Examples</h3>
+                    <p class="feature-text">Inside you will see real life examples of how other small businesses are using AI to save time, reduce costs, improve productivity and increase profits.</p>
+                </div>
+                <div class="feature-card">
+                    <h3 class="feature-title">The Self Paying Investment</h3>
+                    <p class="feature-text">This guide explains how and why it is best to start with a small simple AI project. It explains how other small businesses have an AI implementation strategy that not only pays for itself, but increases their profits almost instantly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Three - Download Form -->
+    <section id="download" class="download-section">
+        <div class="container">
+            <div class="download-content">
+                <div class="download-text">
+                    <h2 class="section-title">Learn More About AI for Your Business</h2>
+                    <p class="download-copy">This guide is jam packed with everything you need to know about how and why implementing AI for your small business is a "No Loss" strategy. Inside you will see how other small businesses are using AI and becoming more profitable. You will learn different ways AI can be used to streamline all kinds of tasks, like customer service, invoicing, staff recruitment and onboarding, extracting data from spreadsheets, and much more.</p>
+                    <p class="download-copy">AI is not a luxury anymore. It's a critical tool that is accessible to practically anyone and any small business, and you don't want to get left behind.</p>
+                </div>
+                <div class="download-form-container">
+                    <form id="ebookForm" class="ebook-form">
+                        <input type="email" id="email" name="email" placeholder="Email Address" required>
+                        <div class="form-row">
+                            <input type="text" id="firstName" name="firstName" placeholder="First Name" required>
+                            <input type="text" id="lastName" name="lastName" placeholder="Last Name" required>
+                        </div>
+                        <input type="tel" id="phone" name="phone" placeholder="Phone Number (Optional)">
+                        <button type="submit" class="cta-button">Download Your Free Copy</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title">See What Others are Saying</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"He knows how to maximize sales with automation - I've been working with Mike for years and have seen him move a lot of products. He makes the most of what automation can do to maximize sales in lots of tough niche markets."</p>
+                    <div class="testimonial-author">
+                        <img src="images/Jorge.jpg" alt="Jorge Diaz" class="author-image">
+                        <div class="author-info">
+                            <p class="author-name">Jorge Diaz</p>
+                            <p class="author-title">Membership Marketing Guru</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"I can't recommend him enough - I've been doing business with Mike for over 20 years. He was quick to grasp marketing automation, especially using AI solutions, and provides valuable input to fuel growth and improve results. I can't recommend him enough."</p>
+                    <div class="testimonial-author">
+                        <img src="images/Randy.jpg" alt="Randy Auf Der Heide" class="author-image">
+                        <div class="author-info">
+                            <p class="author-name">Randy Auf Der Heide</p>
+                            <p class="author-title">Small Business Owner</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Mike is one of the most action-oriented people I've ever met. He doesn't just come up with profitable ideas - he acts on them quickly and thoroughly until they are consistently generating revenue. He's exactly the kind of person you want on your team to make sure you end up with profits (not just promises)."</p>
+                    <div class="testimonial-author">
+                        <img src="images/ChrisAustin.jpg" alt="Chris Austin" class="author-image">
+                        <div class="author-info">
+                            <p class="author-name">Chris Austin</p>
+                            <p class="author-title">Marketing Specialist</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Mike Saif Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">About Mike Saif</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Running a small business comes with unique challenges that only another business owner truly understands. For nearly three decades, I've faced those same daily pressures, built successful enterprises, and learned firsthand how the right automation strategies can transform operations.</p>
+                    <p>I'm Mike Saif, an automation specialist focused exclusively on small businesses and a Google certified AI specialist. My mission is straightforward: helping small businesses like yours implement practical AI solutions that deliver real results without requiring massive investments or technical expertise.</p>
+                    <p>You shouldn't need a large budget or dedicated IT team to benefit from AI automation. Through years of optimizing my own business operations and partnering with companies across various industries, I've developed an approach that prioritizes practical, implementable solutions over complex technology.</p>
+                </div>
+                <div class="about-image">
+                    <img src="images/Section4.png" alt="Mike Saif" class="profile-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Interested in How AI Can Help Your Business?</h2>
+            <p class="contact-intro">If you are interested in learning more about AI and how it can help you and your business, if you want to know more, or are just curious, send me a message and I'll respond quickly.</p>
+            <form id="contactForm" class="contact-form">
+                <div class="form-row">
+                    <input type="text" id="contactFirstName" name="firstName" placeholder="First Name" required>
+                    <input type="text" id="contactLastName" name="lastName" placeholder="Last Name" required>
+                </div>
+                <input type="email" id="contactEmail" name="email" placeholder="Email Address" required>
+                <textarea id="message" name="message" placeholder="Your Message" rows="6" required></textarea>
+                <button type="submit" class="cta-button">Send Your Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Thank You Page (Hidden by default) -->
+    <div id="thankYouPage" class="thank-you-page hidden">
+        <div class="thank-you-content">
+            <h1>Thank You for Requesting My eBook</h1>
+            <a href="#" id="downloadLink" class="cta-button large">Download Your eBook Here</a>
+            <button id="closeThankYou" class="close-button">Close</button>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
